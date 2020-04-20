@@ -1,0 +1,26 @@
+spring:
+    datasource:
+        url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/test?currentSchema=test}
+        username: ${DATABASE_USER:test_user}
+        password: ${DATABASE_PASS:test_pass}
+
+        hikari:
+            maximumPoolSize: 150
+
+    tomcat:
+        initial-size: 150
+        max-active: 200
+
+    jpa:
+        database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+        #show-sql: true
+        properties:
+            hibernate:
+                temp:
+                    # Removes error on start of application
+                    use_jdbc_metadata_defaults: false
+                hbm2ddl:
+                    # automatic tables update create for prod
+                    auto: create-drop
+logging:
+    file: "C:/prog/!home-work/test_project/log2.log"

@@ -1,0 +1,15 @@
+version: '2'
+services:
+  postgres:
+    image: postgres:10.3-alpine
+    command: postgres -c 'max_connections=200'
+    volumes:
+        - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      POSTGRES_DB: test
+      POSTGRES_PASSWORD: test_user
+      POSTGRES_USER: test_pass
+    stdin_open: true
+    tty: true
+    ports:
+        - 5432:5432/tcp
